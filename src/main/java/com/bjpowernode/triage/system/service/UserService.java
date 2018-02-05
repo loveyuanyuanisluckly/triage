@@ -39,6 +39,7 @@ public class UserService extends BaseService<User, Integer> {
 	 * @param user
 	 */
 	@Transactional(readOnly=false)
+	@Override
 	public void save(User user) {
 		entryptPassword(user);
 		user.setCreateDate(DateUtils.getSysTimestamp());
@@ -60,9 +61,11 @@ public class UserService extends BaseService<User, Integer> {
 	 * @param id
 	 */
 	@Transactional(readOnly=false)
+	@Override
 	public void delete(Integer id){
-		if(!isSupervisor(id))
+		if(!isSupervisor(id)){
 			userDao.delete(id);
+		}
 	}
 	
 	/**
@@ -100,9 +103,9 @@ public class UserService extends BaseService<User, Integer> {
 	 * @param oldPwd
 	 * @return
 	 */
-	public boolean checkPassword(User user,String oldPassword){
+	public boolean checkPassword(User user,String oldPwd){
 		byte[] salt =Encodes.decodeHex(user.getSalt()) ;
-		byte[] hashPassword = Digests.sha1(oldPassword.getBytes(),salt, HASH_INTERATIONS);
+		byte[] hashPassword = Digests.sha1(oldPwd.getBytes(),salt, HASH_INTERATIONS);
 		if(user.getPassword().equals(Encodes.encodeHex(hashPassword))){
 			return true;
 		}else{

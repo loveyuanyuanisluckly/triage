@@ -29,6 +29,9 @@ import com.bjpowernode.triage.system.utils.CaptchaException;
 import com.bjpowernode.triage.system.utils.UsernamePasswordCaptchaToken;
 import com.google.common.base.Objects;
 
+import static com.bjpowernode.triage.system.service.UserService.HASH_ALGORITHM;
+import static com.bjpowernode.triage.system.service.UserService.HASH_INTERATIONS;
+
 /**
  * 用户登录授权service(shrioRealm)
  * @author ty
@@ -82,8 +85,9 @@ public class UserRealm extends AuthorizingRealm {
 		}
 		//赋予权限
 		for(Permission permission:permissionService.getPermissions(user.getId())){
-			if(StringUtils.isNotBlank(permission.getPermCode()))
-			info.addStringPermission(permission.getPermCode());
+			if(StringUtils.isNotBlank(permission.getPermCode())){
+				info.addStringPermission(permission.getPermCode());
+			}
 		}
 		
 		//设置登录次数、时间
@@ -112,8 +116,8 @@ public class UserRealm extends AuthorizingRealm {
 	@SuppressWarnings("static-access")
 	@PostConstruct
 	public void initCredentialsMatcher() {
-		HashedCredentialsMatcher matcher = new HashedCredentialsMatcher(userService.HASH_ALGORITHM);
-		matcher.setHashIterations(userService.HASH_INTERATIONS);
+		HashedCredentialsMatcher matcher = new HashedCredentialsMatcher(HASH_ALGORITHM);
+		matcher.setHashIterations(HASH_INTERATIONS);
 		setCredentialsMatcher(matcher);
 	}
 

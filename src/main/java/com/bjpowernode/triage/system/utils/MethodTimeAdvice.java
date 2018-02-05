@@ -17,6 +17,7 @@ public class MethodTimeAdvice implements MethodInterceptor {
     /**
      * 拦截要执行的目标方法
      */
+    @Override
     public Object invoke(MethodInvocation invocation) throws Throwable {
         //用 commons-lang3 提供的 StopWatch 计时，Spring 也提供了一个 StopWatch
         StopWatch clock = new StopWatch();

@@ -13,64 +13,64 @@ import org.hibernate.annotations.DynamicUpdate;
 
 /**
  * 处方entity
+ *
  * @author bjpowernode
  * @date 2016年1月14日
  */
 @Entity
 @Table(name = "Prescription")
-@DynamicUpdate @DynamicInsert
+@DynamicUpdate
+@DynamicInsert
 public class Prescription implements java.io.Serializable {
 
-	private static final long serialVersionUID = 1L;
-	private Integer id;
-	private String symptom;
-	private String diagnose;
-	private String Medicine;
-	
-	public Prescription() {
-	}
-	
-	public Prescription(Integer id) {
-		this.id = id;
-	}
+    private static final long serialVersionUID = 1L;
+    private Integer id;
+    private String symptom;
+    private String diagnose;
+    private String medicine;
 
-	@Id
-	@GeneratedValue(strategy = IDENTITY)
-	@Column(name = "ID", unique = true, nullable = false)
-	public Integer getId() {
-		return this.id;
-	}
+    public Prescription() {
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	
-	@Column(name = "SYMPTOM", unique = true, nullable = false)
-	public String getSymptom() {
-		return symptom;
-	}
+    public Prescription(Integer id) {
+        this.id = id;
+    }
 
-	public void setSymptom(String symptom) {
-		this.symptom = symptom;
-	}
-	
-	@Column(name = "DIAGNOSE", unique = true, nullable = false)
-	public String getDiagnose() {
-		return diagnose;
-	}
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
+    @Column(name = "ID", unique = true, nullable = false)
+    public Integer getId() {
+        return this.id;
+    }
 
-	public void setDiagnose(String diagnose) {
-		this.diagnose = diagnose;
-	}
-	
-	@Column(name = "MEDICINE", unique = true, nullable = false)
-	public String getMedicine() {
-		return Medicine;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	public void setMedicine(String medicine) {
-		Medicine = medicine;
-	}
-	
-	
+    @Column(name = "SYMPTOM", unique = true, nullable = false)
+    public String getSymptom() {
+        return symptom;
+    }
+
+    public void setSymptom(String symptom) {
+        this.symptom = symptom;
+    }
+
+    @Column(name = "DIAGNOSE", unique = true, nullable = false)
+    public String getDiagnose() {
+        return diagnose;
+    }
+
+    public void setDiagnose(String diagnose) {
+        this.diagnose = diagnose;
+    }
+
+    @Column(name = "DIAGNOSE", unique = true, nullable = false)
+    public String getMedicine() {
+        return medicine;
+    }
+
+    public void setMedicine(String medicine) {
+        this.medicine = medicine;
+    }
 }

@@ -23,6 +23,7 @@ public class SessionListener implements HttpSessionListener {
 	private Logger log=LoggerFactory.getLogger(SessionListener.class);
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
+	@Override
 	public void sessionCreated(HttpSessionEvent event) {
 		HttpSession session = event.getSession();
 		ServletContext application = session.getServletContext();
@@ -42,6 +43,7 @@ public class SessionListener implements HttpSessionListener {
 	}
 
 	@SuppressWarnings("rawtypes")
+	@Override
 	public void sessionDestroyed(HttpSessionEvent event) {
 		HttpSession session = event.getSession();
 		ServletContext application = session.getServletContext();

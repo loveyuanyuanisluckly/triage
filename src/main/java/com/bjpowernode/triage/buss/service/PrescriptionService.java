@@ -38,6 +38,7 @@ public class PrescriptionService extends BaseService<Prescription, Integer> {
 	 * @param prescription
 	 */
 	@Transactional(readOnly=false)
+	@Override
 	public void save(Prescription prescription) {
 		prescriptionDao.save(prescription);
 	}
@@ -48,9 +49,11 @@ public class PrescriptionService extends BaseService<Prescription, Integer> {
 	 * @param id
 	 */
 	@Transactional(readOnly=false)
+	@Override
 	public void delete(Integer id){
-		if(!isSupervisor(id))
+		if(!isSupervisor(id)){
 			prescriptionDao.delete(id);
+		}
 	}
 	
 	

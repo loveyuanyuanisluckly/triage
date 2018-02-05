@@ -17,7 +17,8 @@ import com.bjpowernode.triage.system.entity.ScheduleJob;
  */
 @DisallowConcurrentExecution  
 public class TaskA implements Job {
-	 
+
+    @Override
     public void execute(JobExecutionContext context) throws JobExecutionException {
         ScheduleJob scheduleJob = (ScheduleJob)context.getMergedJobDataMap().get("scheduleJob");
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy年MM月dd日 HH时mm分ss秒");    

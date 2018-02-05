@@ -44,6 +44,7 @@ public class TriageService extends BaseService<Triage, Integer> {
 	 * @param triage
 	 */
 	@Transactional(readOnly=false)
+	@Override
 	public void save(Triage triage) {
 		triageDao.save(triage);
 	}
@@ -53,9 +54,11 @@ public class TriageService extends BaseService<Triage, Integer> {
 	 * @param id
 	 */
 	@Transactional(readOnly=false)
+	@Override
 	public void delete(Integer id){
-		if(!isSupervisor(id))
+		if(!isSupervisor(id)){
 			triageDao.delete(id);
+		}
 	}
 	
 	

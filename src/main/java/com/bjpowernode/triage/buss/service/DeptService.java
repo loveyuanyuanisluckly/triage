@@ -40,6 +40,7 @@ public class DeptService extends BaseService<Dept, Integer> {
 	 * @param dept
 	 */
 	@Transactional(readOnly=false)
+	@Override
 	public void save(Dept dept) {
 		deptDao.save(dept);
 	}
@@ -50,9 +51,11 @@ public class DeptService extends BaseService<Dept, Integer> {
 	 * @param id
 	 */
 	@Transactional(readOnly=false)
+	@Override
 	public void delete(Integer id){
-		if(!isSupervisor(id))
+		if(!isSupervisor(id)){
 			deptDao.delete(id);
+		}
 	}
 	
 	

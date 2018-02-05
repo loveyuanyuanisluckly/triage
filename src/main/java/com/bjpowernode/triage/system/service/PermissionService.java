@@ -54,8 +54,9 @@ public class PermissionService extends BaseService<Permission, Integer>{
 					exist=false;
 				}
 			}
-			if(!exist)
+			if(!exist){
 				save(permission);
+			}
 		}
 	}
 	

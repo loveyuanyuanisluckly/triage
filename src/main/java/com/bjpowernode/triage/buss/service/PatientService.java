@@ -39,6 +39,7 @@ public class PatientService extends BaseService<Patient, Integer> {
 	 * @param patient
 	 */
 	@Transactional(readOnly=false)
+	@Override
 	public void save(Patient patient) {
 		patientDao.save(patient);
 	}
@@ -49,9 +50,11 @@ public class PatientService extends BaseService<Patient, Integer> {
 	 * @param id
 	 */
 	@Transactional(readOnly=false)
+	@Override
 	public void delete(Integer id){
-		if(!isSupervisor(id))
+		if(!isSupervisor(id)){
 			patientDao.delete(id);
+		}
 	}
 	
 	

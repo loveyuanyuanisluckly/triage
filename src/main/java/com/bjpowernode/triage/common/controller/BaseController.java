@@ -68,14 +68,18 @@ public class BaseController {
 		int pageSize=20;	//每页行数
 		String orderBy="id";	//排序字段
 		String order="asc";	//排序顺序
-		if(StringUtils.isNotEmpty(request.getParameter("page")))
+		if(StringUtils.isNotEmpty(request.getParameter("page"))){
 			pageNo=Integer.valueOf(request.getParameter("page"));
-		if(StringUtils.isNotEmpty(request.getParameter("rows")))
+		}
+		if(StringUtils.isNotEmpty(request.getParameter("rows"))){
 			pageSize=Integer.valueOf(request.getParameter("rows"));
-		if(StringUtils.isNotEmpty(request.getParameter("sort")))
+		}
+		if(StringUtils.isNotEmpty(request.getParameter("sort"))){
 			orderBy=request.getParameter("sort").toString();
-		if(StringUtils.isNotEmpty(request.getParameter("order")))
+		}
+		if(StringUtils.isNotEmpty(request.getParameter("order"))){
 			order=request.getParameter("order").toString();
+		}
 		return new Page<T>(pageNo, pageSize, orderBy, order);
 	}
 	
