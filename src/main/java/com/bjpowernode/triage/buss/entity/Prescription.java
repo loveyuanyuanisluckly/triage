@@ -65,7 +65,7 @@ public class Prescription implements java.io.Serializable {
         this.diagnose = diagnose;
     }
 
-    @Column(name = "DIAGNOSE", unique = true, nullable = false)
+    @Column(name = "MEDICINE", unique = true, nullable = false)
     public String getMedicine() {
         return medicine;
     }
